@@ -99,7 +99,7 @@ const MobileNavbar = () => {
   return (
     <div className="md:hidden">
       {/* Top Navbar */}
-      <div className="w-full h-[56px] flex items-center justify-between px-4 py-2">
+      <div className="w-full h-[56px]  flex  justify-between px-4 py-2 bg-white z-10">
         {/* Menu Icon */}
         <div className='flex gap-2'>
         <button className="text-gray-700" onClick={toggleMenu}>
@@ -120,8 +120,9 @@ const MobileNavbar = () => {
       </div>
 
       {/* Search Section */}
+      <div className="">
       <div className='flex'>
-        <div className='w-[32px] h-[32px] rounded bg-teal-50 m-3'>
+        <div className='w-[32px] h-[32px] rounded bg-teal-50 m-3 '>
         <img src={marker} alt="" className='p-2' />
         </div>
         
@@ -141,8 +142,13 @@ const MobileNavbar = () => {
           />
         </div>
       </div>
-      {isMenuOpen && (
-        <div className="fixed top-0 left-0 w-[330px] h-[622px] bg-white shadow-lg z-50 overflow-auto">
+      </div>
+     
+      <div
+        className={`fixed top-0 left-0 w-[330px] h-[622px] bg-white shadow-lg z-50 overflow-auto transform transition-transform duration-300 ${
+          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
           {/* Close Button */}
           <div className="flex justify-end  p-3 border-b border-gray-300">
             <button onClick={toggleMenu} className="text-gray-700">
@@ -299,10 +305,10 @@ const MobileNavbar = () => {
             </div>
           )}
         </div>
-      )}
+    
       {/* Bottom Navbar */}
       <div>
-                {!user && (
+                {user && (
                       <div className="fixed w-[428px] h-[69px] bottom-0  bg-white border-t border-gray-300 z-10">
                       <div className="flex justify-around items-center py-3">
                         {navIconsData.map((navIcon:any, index:any) => {

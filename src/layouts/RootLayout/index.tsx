@@ -6,7 +6,7 @@ import ModalContainer from '../../containers/Modal.container';
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <nav>
+      <nav className='z-10'>
         <Header />
         <NavBar />
       </nav>

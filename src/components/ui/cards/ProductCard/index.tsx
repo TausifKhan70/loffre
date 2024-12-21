@@ -27,14 +27,20 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <Card
-      className="w-[192px] h-[368px] sm:h-[472px] sm:w-[232px] md:rounded-[16px] p-[10px] bg-[#F3F3F3] font-poppins shadow-sm cursor-pointer hover:shadow-lg transition-shadow duration-300 ease-in-out"
+      className="w-[192px] h-[368px] sm:h-[472px] sm:w-[244px] md:rounded-[16px] p-[10px] bg-[#F3F3F3] font-poppins cursor-pointer duration-300 ease-in-out"
+      onMouseEnter={(e) =>
+        (e.currentTarget.style.boxShadow = '0px 0px 20px rgba(128, 128, 128, 0.3)')
+      }
+      onMouseLeave={(e) =>
+        (e.currentTarget.style.boxShadow = '0px 0px 10px rgba(128, 128, 128, 0.2)')
+      }
       cover={
         <div
           className="relative overflow-hidden w-[180px] h-[220px] sm:w-[212px] sm:h-[260px]"
           style={{ paddingBottom: '55.56%', borderRadius: '6px' }}
         >
-          <div className="absolute top-0 left-0 sm:w-[212px] sm:h-[260px] w-[180px] h-[220px] bg-[#00000033]">
-            <img alt="product" src={image} className="" />
+          <div className="absolute top-0 left-0 sm:w-[224px] sm:h-[260px] w-[180px] h-[220px]">
+            <img alt="product" src={image} className="w-[244px]" />
           </div>
           <div className="absolute top-[10px] right-[10px]">
             <LikeButton />

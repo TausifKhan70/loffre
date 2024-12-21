@@ -532,7 +532,7 @@ export default function HorizontalLinearStepper() {
         <ChevronsRight style={{ color: '#959595' }} />
       </div>
       <div className="my-10 border rounded p-3 stepper-container">
-        <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: '100%' }} >
           <Stepper activeStep={activeStep}>
             {steps.map((label, index) => {
               const stepProps = {};

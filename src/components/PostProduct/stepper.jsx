@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
+import { Button } from '../MyButton/CustomButton';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -37,7 +37,8 @@ const parentImgPath = './Parent category';
 const childImgPath = './Child Category';
 
 const steps = [
-  'Select Category',
+  'Selected Category',
+  'Select Sub Category',
   'Details',
   'Extra Details',
   'Images',
@@ -1792,7 +1793,7 @@ const PostProduct = () => {
       </div>
       <div className="my-10 border rounded p-3 stepper-container">
         <Box sx={{ width: '100%' }}>
-          <Stepper activeStep={activeStep}>
+          <Stepper  activeStep={activeStep}>
             {steps.map((label, index) => {
               const stepProps = {};
 
@@ -1800,7 +1801,7 @@ const PostProduct = () => {
                 stepProps.completed = false;
               }
               return (
-                <Step key={label} {...stepProps}>
+                <Step  key={label} {...stepProps}>
                   <StepLabel></StepLabel>
                 </Step>
               );
@@ -2155,17 +2156,18 @@ const PostProduct = () => {
                 </div>
               )}
               <div className="row">
-                <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 ,gap:'10px'}}>
                   <Box sx={{ flex: '1 1 auto' }} />
                   <Button
                     className="stepper-btn"
                     color="inherit"
+                    variant="outline"
                     disabled={activeStep === 0}
                     onClick={handleBack}
                   >
                     Back
                   </Button>
-                  <Button className="stepper-btn" onClick={handleNext}>
+                  <Button className="stepper-btn" onClick={handleNext} variant="default">
                     {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
                   </Button>
                 </Box>

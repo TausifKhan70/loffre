@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
+// import Button from '../MyButton/CustomButton'
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -25,6 +25,7 @@ import App from '../maps/GoogleMap';
 import * as Yup from 'yup';
 import Select from 'react-select';
 import { CircleX } from 'lucide-react';
+import { Button } from 'components/MyButton/CustomButton';
 
 const steps = ['Position Type', 'Details', 'Location'];
 
@@ -873,6 +874,7 @@ export default function HorizontalLinearStepper() {
                   <Button
                     className={activeStep === 0 ? 'd-none' : 'stepper-btn'}
                     color="inherit"
+                    variant="outline"
                     disabled={activeStep === 0}
                     onClick={handleBack}
                   >
@@ -880,6 +882,7 @@ export default function HorizontalLinearStepper() {
                   </Button>
                   <Button
                     className="stepper-btn"
+                    variant="default"
                     onClick={() => {
                       if (activeStep === 1) {
                         // Submit the form using Formik ref

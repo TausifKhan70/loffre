@@ -148,7 +148,7 @@ export function CustomModalTwo({
             <IoIosClose className="modal-close-icon" />
           </button>
           {/* Modal Header */}
-          <h2 className="text-xl font-semibold mt-4 mb-1">{title}</h2>
+          <h2 className="text-xl font-semibold mt-3 mb-1">{title}</h2>
           <p className="mb-1 text-gray-600 text-bold">{description}</p>
           {/* Formik Form */}
           <Formik
@@ -249,7 +249,7 @@ export function CustomModalTwo({
                   <></>
                 )}
                 {/* Modal Footer (Single Full-Width Submit Button) */}
-                <div className="mt-6">
+                <div className="mt-5">
                   <Button className="w-full" type="submit">
                     {submitButtonText}
                   </Button>
@@ -257,7 +257,7 @@ export function CustomModalTwo({
                 </div>
 
                 {label === 'Login' || label === 'ForgetPssword' ? (
-                  <div class=" social-login-buttons my-4 mx-3">
+                  <div class=" social-login-buttons my-3 mx-3">
                     <div className='flex'>
                     <div className="flex-grow border-t border-gray-300 m-[10px]"></div>
                     <span className="px-2 text-gray-500 text-sm">Or login with</span>
@@ -265,7 +265,7 @@ export function CustomModalTwo({
                     </div>
 
                     
-                    <div class="icon-container d-flex gap-3 mt-4 justify-center">
+                    <div class="icon-container d-flex gap-3 mt-3 justify-center">
                       <div className="cursor-pointer">
                         <img
                           onClick={signInWithFacebook}

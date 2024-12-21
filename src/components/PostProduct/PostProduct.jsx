@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Header,Footer } from 'sections';
+
 import NavBar from '../NavBar';
 import PostProductStepper from './stepper';
 const PostProduct = () => {

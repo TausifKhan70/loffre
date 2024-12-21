@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import jobData from 'data/jobOpening-data.json';
 import productsData from 'data/product-data.json';
 import { UiElements } from 'components';
@@ -66,6 +66,21 @@ const subSections = [
 ];
 
 const Products = () => {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [childToShow, setChildToShow] = useState(screenWidth > 1399 ? 5 : 4);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const currentWidth = window.innerWidth;
+      setScreenWidth(currentWidth);
+      setChildToShow(currentWidth > 1399 ? 5 : 4);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup on component unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
 
     <section>
@@ -79,7 +94,7 @@ const Products = () => {
 
 
               <div className="flex gap-2 items-center cursor-pointer">
-                <span className="text-[#009b87] font-semibold text-[16px] md:text-xl leading-6 w-[63px] sm:w-[80px] md:leading-[30px]">
+                <span className="text-[#2CB1B5] font-semibold text-[16px] md:text-xl leading-6 w-[63px] sm:w-[80px] md:leading-[30px]">
                   View All
                 </span>
                 <RightArrow />
@@ -89,7 +104,7 @@ const Products = () => {
               <Carousel
                 data={data}
                 ChildComponent={ChildComponent}
-                childToShow={5}
+                childToShow={childToShow}
                 mob_res={mob_res}
               />
             </div>

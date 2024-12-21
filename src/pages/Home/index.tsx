@@ -12,7 +12,7 @@ const Home = () => {
     <>
       <RootLayout>
         {/* Hero Section Carousel */}
-        <div className="mt-5 md:pb-10 container">
+        <div className="mt-2 md:pb-10 container">
           <HeroSection />
         </div>
 

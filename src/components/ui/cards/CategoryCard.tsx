@@ -19,7 +19,7 @@ const CategoryCard: React.FC<Category> = ({ image_url, text }) => {
         </div>
       </div>
       <div className="text-wrap w-[88px] md:w-[110px] h-[20%]">
-        <p className="text-xs leading-[18px] font-normal md:text-sm md:leading-[21px] md:font-medium flex text-center text-[#1B1B1B]">
+        <p className="text-xs leading-[18px] font-normal md:text-sm md:leading-[21px] md:font-medium flex text-center text-[#1B1B1B] font-poppins">
           {text}
         </p>
       </div>

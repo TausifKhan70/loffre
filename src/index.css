@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Poppins'!important;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -13,7 +13,7 @@
 }
 /* latin */
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Poppins'!important;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -25,7 +25,7 @@
 }
 /* latin-ext */
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Poppins'!important;
   font-style: normal;
   font-weight: 600;
   font-display: swap;
@@ -36,7 +36,7 @@
 }
 /* latin */
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Poppins'!important;
   font-style: normal;
   font-weight: 600;
   font-display: swap;
@@ -47,7 +47,7 @@
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 body {
-  font-family: 'Poppins', sans-serif; /* Set Poppins as the default font */
+  font-family: 'Poppins', sans-serif !important; /* Set Poppins as the default font */
 }
 @layer base {
   :root {

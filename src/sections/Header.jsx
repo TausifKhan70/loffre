@@ -14,6 +14,7 @@ import CardMedia from '@mui/material/CardMedia';
 import ProductIcon from 'assets/icons/steppers-icon/Group.png';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import options from '../data/category.json'; 
 import {
   HeartIcon,
   LocationIcon,
@@ -27,6 +28,7 @@ import navIconsData from 'data/nav-icons.json';
 import { generalConfigs } from 'configs';
 import MobileNavbar from './MobileNavbar';
 import { Reducers,Selectors } from 'store';
+import CustomCard from 'components/CustomCard/CustomCard';
 const {uiReducers} = Reducers
 const {AuthSelectors} = Selectors
 
@@ -45,15 +47,12 @@ const Header = (props) => {
   const [postModalshow, setPostModalShow] = useState(false);
   const [postOptionSelect, setPostOptionSelect] = useState('');
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 428);
+  const [headerActiveIcon, setHeaderActiveIcon] = useState('');
   const navigate = useNavigate();
   const handleHeaderIconClick = (iconName) => {
+    setHeaderActiveIcon(iconName); // Set the active icon
     if (iconName === 'Post') {
-      handlePostModalShow(); // Open the modal when "Post" is clicked
-    } else if (iconName === 'Job') {
-      navigate('/Post-Job');
-    } else {
-      // Handle other cases here if needed
-      setHeaderActiveIcon(iconName);
+      handlePostModalShow();
     }
   };
   const toggleMobileMenu = () => {
@@ -129,10 +128,14 @@ const Header = (props) => {
         return null;
     }
   };
+  const handleContinue = () =>{
+    navigate("/post-product")
+  }
 
   return (
    
-      <div className="w-full flex items-center md:justify-between  md:px-[30px] 2xl:px-[100px] md:py-4 border-b border-gray-300">
+    <div className="w-full h-[84px] bg-white border-b flex items-center md:justify-between md:px-[30px] 2xl:px-[100px] md:py-4 fixed top-0 z-30">
+
         {/* Logo */}
         <div>
           <Link to="/">
@@ -211,10 +214,12 @@ const Header = (props) => {
                   const handleClick = () => handleHeaderIconClick(navIcon.iconName);
                   return (
                     <div
-                      className={`flex flex-col items-center gap-1 cursor-pointer`}
-                      onClick={handleClick}
-                      key={index}
-                    >
+                className={`flex flex-col items-center gap-1 cursor-pointer ${
+                  headerActiveIcon === navIcon.iconName ? 'border-b-4 border-teal-500 rounded-bl-sm rounded-br-sm' : ''
+                }`}
+                onClick={handleClick}
+                key={index}
+              >
                       {IconComponent && (
                         <IconComponent
                           color="#1B1B1B"
@@ -240,7 +245,7 @@ const Header = (props) => {
             </div>
            {/* )}  */}
         </div>
-        <Modal show={postModalshow} centered onHide={handlePostModalClose}>
+        <Modal className='w-[467px] h-[460px]' show={postModalshow} centered onHide={handlePostModalClose}>
       <Modal.Body className="relative p-5 text-center">
         {/* Close Button */}
         <button
@@ -251,83 +256,29 @@ const Header = (props) => {
         </button>
 
         {/* Modal Heading */}
-        <h2 className="text-xl font-semibold mb-4">
-          Lorem ipsum dolor sit amet consectetur.
+        <h2 className="text-2xl font-semibold mb-4">
+          Lorem ipsum dolor sit amet <br /> consectetur.
         </h2>
 
         {/* Card Options */}
-        <div className="flex flex-col gap-3">
-          {/* Product Card */}
-          <div
-            onClick={() => setPostOptionSelect('Post')}
-            className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer ${
-              postOptionSelect === 'Post'
-                ? 'border-teal-500 bg-teal-50'
-                : 'border-gray-300'
-            }`}
-          >
-            <div className="flex items-center gap-3">
-              <div
-                className={`w-6 h-6 border rounded-full flex items-center justify-center ${
-                  postOptionSelect === 'Post' ? 'bg-teal-500' : 'border-gray-400'
-                }`}
-              >
-                {postOptionSelect === 'Post' && (
-                  <div className="w-3 h-3 bg-white rounded-full"></div>
-                )}
-              </div>
-              <div className="text-left">
-                <p className="font-medium">Products</p>
-                <p className="text-sm text-gray-500">Lorem ipsum dolor</p>
-              </div>
-            </div>
-            <div className='w-16 h-16 rounded-full bg-teal-100'>
-            <img
-              src={ProductIcon}
-              alt="Products"
-              className="w-[25px] h-[40px] bg-teal-50"
-            />
-            </div>
-            
-          </div>
-
-          {/* Jobs Card */}
-          <div
-            onClick={() => setPostOptionSelect('Job')}
-            className={`flex items-center justify-between p-4 border rounded-lg cursor-pointer ${
-              postOptionSelect === 'Job'
-                ? 'border-teal-500 bg-teal-50'
-                : 'border-gray-300'
-            }`}
-          >
-            <div className="flex items-center gap-3">
-              <div
-                className={`w-6 h-6 border rounded-full flex items-center justify-center ${
-                  postOptionSelect === 'Job' ? 'bg-teal-500' : 'border-gray-400'
-                }`}
-              >
-                {postOptionSelect === 'Job' && (
-                  <div className="w-3 h-3 bg-white rounded-full"></div>
-                )}
-              </div>
-              <div className="text-left">
-                <p className="font-medium">Jobs</p>
-                <p className="text-sm text-gray-500">Lorem ipsum dolor</p>
-              </div>
-            </div>
-            <img
-              src={JobsIcon}
-              alt="Jobs"
-              className="w-8 h-8 bg-teal-50 rounded-full"
-            />
-          </div>
-        </div>
+        <div className="flex flex-col gap-3 items-center">
+      {options.map((option) => (
+        <CustomCard
+        key={option.id}
+        image={option.image} 
+        title={option.title}
+        description={option.description}
+        isSelected={postOptionSelect === option.id}
+        onClick={() => setPostOptionSelect(option.id)}
+      />
+      ))}
+    </div>
 
         {/* Continue Button */}
         <Button
-          onClick={() => console.log('Selected:', postOptionSelect)}
+          onClick={handleContinue}
           variant="default"
-          className="w-full mt-5"
+          className="w-[351px] h-[40px] mt-5"
           disabled={!postOptionSelect}
         >
           Continue

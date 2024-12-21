@@ -20,7 +20,7 @@ const NavBar = () => {
   return (
     <>
       {!isMobileScreen && ( // Conditional rendering based on state
-        <div className="w-full h-[64px] flex justify-between items-center md:px-[60px] xl:px-[100px] 2xl:px-[170px] shadow-sm ">
+        <div className="w-full h-[64px] mt-[84px] flex justify-between items-center md:px-[60px] xl:px-[100px] 2xl:px-[170px] shadow-sm ">
           {megaMenuData.map((menuData, index) => (
             <CustomNavigationMenu
               key={index}

@@ -61,7 +61,7 @@ const JobCard: React.FC<JobCardProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="w-[46px] h-[46px] rounded-full overflow-hidden relative">
+          <div className="w-[46px] h-[46px] rounded-full border-1 border-gray-400 overflow-hidden relative">
             <img
               src={companyImage}
               alt={companyName}
