@@ -115,7 +115,7 @@ const Header = (props) => {
   // handle post option
   const handlePostOption = (post) => {
     setPostOptionSelect(post); // Use `post` to set the selected option
-    handlePostModalClose(); // Close the modal after selection
+    handlePostModalClose(); // Close the modal after selection icon
   };
 
   const getClickHandler = (onClick, args) => {
